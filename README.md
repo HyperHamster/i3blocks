@@ -6,7 +6,7 @@ A collection repository of my personal [i3blocks](https://github.com/vivien/i3bl
 
 ### media-info.sh
 
-This block displays information from D-Bus MPRIS compliant media players.
+This block displays information from D-Bus MPRIS compliant media players (such as Spotify or VLC).
 
 This block utilizes [Font Awesome](http://fontawesome.io/) icons.
 
