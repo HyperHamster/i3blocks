@@ -1,6 +1,6 @@
 # My i3blocks
 
-A collection repository of my own i3blocks.
+A collection repository of my personal [i3blocks](https://github.com/vivien/i3blocks).
 
 ### media-info.sh
 
