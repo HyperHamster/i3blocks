@@ -1,8 +1,6 @@
-# My i3blocks
+This is a collection repository of my personal [i3blocks](https://github.com/vivien/i3blocks).
 
-A collection repository of my personal [i3blocks](https://github.com/vivien/i3blocks).
-
----
+--
 
 ### media-info.sh
 
@@ -19,5 +17,3 @@ Sample `~/.i3blocks.conf` Entry:
 command=bash .../media-info.sh
 interval=1
 ```
-
----
