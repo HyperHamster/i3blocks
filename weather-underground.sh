@@ -8,22 +8,25 @@ while getopts ':CRT' OPT; do
         R) R=0;;
         T) T=0;;
     esac
-done; shift $((OPTIND-1))
+done
+shift $((OPTIND-1))
 
 if [[ -n $T ]]; then
     kill $TIMER_PID &>/dev/null
-    exit
+    exit 0
 fi
 
 if [[ -z $1 ]]; then
     echo -n 'No API Key'
-    exit
-fi; API_KEY=$1
+    exit 33
+fi
+API_KEY=$1
 
 if [[ -z $2 ]]; then
     echo -n 'No Location Specified'
-    exit
-fi; LOC=$2
+    exit 33
+fi
+LOC=$2
 
 # Retrieve & Store Wunderground Information
 
@@ -88,7 +91,9 @@ display() {
     if [[ -n $* ]]; then
         echo -n "↑ $high ↓ $low"
         return
-    fi; echo -n "$weather, $temp"
+    fi
+    echo -n "$weather, $temp"
+    exit 0
 }
 
 if [[ -n $IN ]]; then
@@ -98,4 +103,3 @@ if [[ -n $IN ]]; then
 else
     display
 fi
-
