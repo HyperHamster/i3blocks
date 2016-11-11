@@ -9,7 +9,7 @@ players=$(PLAYERS)
 
 if [[ -z $players ]]; then
     echo -n '  No Media'
-    exit
+    exit 0
 fi
 
 if [[ $players =~ spotify ]]; then
@@ -49,7 +49,7 @@ status=$(STATUS)
 
 if [[ $status == Stopped ]]; then
     echo -n '  Media Stopped'
-    exit
+    exit 0
 fi
 
 METADATA() {
@@ -62,18 +62,19 @@ METADATA() {
         #done
         echo "$DBUS_OUT" | grep -A2 "\"$1\"" | cut -z -d\" -f4
         return
-    fi; echo "$DBUS_OUT" | grep -A1 "\"$1\"" | cut -z -d\" -f4
+    fi
+    echo "$DBUS_OUT" | grep -A1 "\"$1\"" | cut -z -d\" -f4
 }
 
 # Spotify Adblock
 
 if [[ $current_player == spotify ]]; then
-    PA_N=$(pactl list sink-inputs | tr -d '\n' | sed 's_.*#\(.*\)Spotify.*_\1_' | cut -f1)
+    PA_N=$(pactl list sink-inputs | tr -d '\n' | sed 's_.*#\(.*\)"spotify".*_\1_i' | cut -f1)
     if [[ $(METADATA mpris:trackid) =~ spotify:ad ]]; then
         pactl set-sink-input-mute $PA_N 1
         echo -n '  Ad Blocked'
-        exit
-    elif [[ $(pactl list sink-inputs | tr -d '\n' | sed 's_.*Mute: \(.*\)Spotify.*_\1_' | cut -f1) == 'yes' ]]; then
+        exit 33
+    elif [[ $(pactl list sink-inputs | tr -d '\n' | sed 's_.*mute: \(.*\)"spotify".*_\1_i' | cut -f1) == yes ]]; then
         pactl set-sink-input-mute $PA_N 0
     fi
 fi
@@ -84,7 +85,8 @@ truncate() {
     if [[ ${#1} -gt $2 ]]; then
         echo "$1" | cut -c-$2 | sed 's_\s*$_…_'
         return
-    fi; echo "$1"
+    fi
+    echo "$1"
 }
 artist=$(truncate "$(METADATA xesam:artist)" 24)
 song=$(truncate "$(METADATA xesam:title)" 24)
