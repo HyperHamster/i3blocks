@@ -31,7 +31,7 @@ Scroll Up | Previous Track
 
 ### weather-underground.sh
 
-This block displays information from [Weather Underground's API](https://www.wunderground.com/weather/api/). It requires that you supply it a valid Wunderground API key and a valid location.
+This block displays information from [Weather Underground's API](https://www.wunderground.com/weather/api/). It requires that you supply it a valid Wunderground API key and a valid location. It will update the current temperature and weather condition every 15 minutes relative to when it's initially ran (you can make this faster, but too fast and you'll deplete your daily update allowance).
 
 In order to get a free API key you must sign up for an account [here](https://www.wunderground.com/member/registration?mode=api_signup), then select the Stratus Developer plan [here](https://www.wunderground.com/weather/api/d/pricing.html) (I know it says purchase but it's most certainly free). Valid location formats include US zipcodes (10101), US state/city (NY/New_York), or country/city (UK/London). To display in degrees Celsius/Centigrade supply the **-C** option.
 
@@ -50,6 +50,6 @@ Input | Action
 ----- | ------
 Left Click | *N/A*
 Right Click | Flash High/Low Temp
-Middle Click | *N/A*
+Middle Click | Force Update
 Scroll Down | *N/A*
 Scroll Up | *N/A*
