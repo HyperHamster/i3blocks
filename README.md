@@ -1,6 +1,6 @@
 This is a collection repository of my personal [i3blocks](https://github.com/vivien/i3blocks).
 
---
+---
 
 ### media-info.sh
 
@@ -27,7 +27,7 @@ Middle Click | Stop Track
 Scroll Down | Next Track
 Scroll Up | Previous Track
 
---
+---
 
 ### weather-underground.sh
 
